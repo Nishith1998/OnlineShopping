@@ -11,7 +11,7 @@ const Cart = () => {
   // const [totalAmount, totalQuantity] = useSelector((state: GlobalState) => [
   //   state.cart.totalAmount,
   //   state.cart.totalQuantity,
-  // ]);
+  // ]); // this is wrong way because destructuring will give new reference every time.
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
