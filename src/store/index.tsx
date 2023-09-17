@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import uiSliceReducer, { UIState } from "./UI-slice";
-import cartSliceReducer, { CartState } from "./Cart-slice";
+import uiSliceReducer from "./UI-slice";
+import cartSliceReducer from "./Cart-slice";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-export type GlobalState = {
-    ui: UIState,
-    cart: CartState
-}
+const store = configureStore({
+  reducer: { ui: uiSliceReducer, cart: cartSliceReducer },
+});
 
-const store = configureStore({ reducer: { ui: uiSliceReducer, cart: cartSliceReducer } });
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default store;

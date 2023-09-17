@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export type Notification = {
   status: string;
@@ -17,7 +17,7 @@ const UISlice = createSlice({
     toggleShowCart: (state) => {
       state.showCart = !state.showCart;
     },
-    setNotification: (state, action) => {
+    setNotification: (state, action: PayloadAction<Notification | null>) => {
       state.notification = action.payload;
     },
   },

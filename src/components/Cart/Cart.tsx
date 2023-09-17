@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
 import Card from "../UI/Card";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
-import { GlobalState } from "../../store";
+import { RootState, useAppSelector } from "../../store";
 
 const Cart = () => {
-  const cartItems = useSelector((state: GlobalState) => state.cart.items);
-  const totalAmount = useSelector((state: GlobalState) => state.cart.totalAmount);
-  const totalQuantity = useSelector((state: GlobalState) => state.cart.totalQuantity);
-  // const [totalAmount, totalQuantity] = useSelector((state: GlobalState) => [
+  const cartItems = useAppSelector((state: RootState) => state.cart.items);
+  const totalAmount = useAppSelector(
+    (state: RootState) => state.cart.totalAmount
+  );
+  const totalQuantity = useAppSelector(
+    (state: RootState) => state.cart.totalQuantity
+  );
+  // const [totalAmount, totalQuantity] = useSelector((state: RootState) => [
   //   state.cart.totalAmount,
   //   state.cart.totalQuantity,
   // ]); // this is wrong way because destructuring will give new reference every time.

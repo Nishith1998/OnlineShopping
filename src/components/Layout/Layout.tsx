@@ -6,8 +6,7 @@ import {
   ReactPortal,
 } from "react";
 import Header from "./Header";
-import { useSelector } from "react-redux";
-import { GlobalState } from "../../store";
+import { RootState, useAppSelector } from "../../store";
 import Notification from "../UI/Notification";
 
 const Layout = (props: {
@@ -21,9 +20,7 @@ const Layout = (props: {
     | null
     | undefined;
 }) => {
-  const notification = useSelector(
-    (state: GlobalState) => state.ui.notification
-  );
+  const notification = useAppSelector((state: RootState) => state.ui.notification);
   return (
     <Fragment>
       {notification && (
