@@ -127,7 +127,10 @@ export const getCartData = () => {
       const cartItems = await getCartApi();
       console.log("cartItems: ", cartItems);
       cartItems.changed = false;
-      dispatch(cartActions.setCartItems(cartItems ?? initialCartState));
+      if(cartItems.items) {
+        cartItems.items = [];
+      }
+      dispatch(cartActions.setCartItems(cartItems));
       dispatch(
         UIActions.setNotification(null)
       );
